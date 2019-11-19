@@ -52,8 +52,8 @@ RSpec.describe CurrenciesController, type: :request do
     context 'when the source currency is wrong' do
       let(:invalid_source_currency) do
         {
-            amount: '500', source_currency: 'USDG',
-            target_currency: 'EUR'
+          amount: '500', source_currency: 'USDG',
+          target_currency: 'EUR'
         }
       end
       before { post '/api/currency/convert', params: invalid_source_currency }
@@ -68,8 +68,8 @@ RSpec.describe CurrenciesController, type: :request do
     context 'when the target currency is wrong' do
       let(:invalid_source_currency) do
         {
-            amount: '500', source_currency: 'USD',
-            target_currency: 'EURZ'
+          amount: '500', source_currency: 'USD',
+          target_currency: 'EURZ'
         }
       end
       before { post '/api/currency/convert', params: invalid_source_currency }

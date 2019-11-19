@@ -1,7 +1,17 @@
 # app/controllers/currencies_controller.rb
 
 class CurrenciesController < ApplicationController
-  # Receive request and start converting the currency
+
+  api :POST, '/api/currency/convert', 'Convert currencies'
+  param :amount, String, :desc => 'amount to be converted', :required => true
+  param :source_currency, String, :desc => 'Source currency', :required => true
+  param :target_currency, String, :desc => 'Target currency', :required => true
+  returns :code => 200, :desc => 'a successful response' do
+    property :amount, String, :desc => 'Converted amount'
+  end
+
+
+  #Receive request and start converting the currency
   def convert_currency
     converter = Converter.new(
       params[:amount], params[:source_currency],
