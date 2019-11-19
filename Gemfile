@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use Puma as the app server
@@ -21,7 +20,7 @@ gem 'sqlite3'
 # gem 'capistrano-rails', group: :development
 
 # # For env variables
-# gem 'figaro'
+gem 'figaro'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -43,8 +42,6 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails', '~> 4.0'
-  gem 'faker'
   gem 'simplecov'
 end
 

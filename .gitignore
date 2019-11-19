@@ -12,3 +12,6 @@
 /config/application.yml
 /config/secrets.yml
 /config/credentials.yml
+
+# Ignore coverage files
+/coverage/*
