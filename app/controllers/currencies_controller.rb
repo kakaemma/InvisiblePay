@@ -1,7 +1,19 @@
 # app/controllers/currencies_controller.rb
 
 class CurrenciesController < ApplicationController
-  # Receive request and start converting the currency
+
+  api :POST, '/api/currency/convert', 'Convert currencies'
+  error :code => 400, :desc => :bad_request, :meta=>{'error':Message.invalid_params}
+  error :code => 400, :desc => :bad_request, :meta =>{'error':Message.invalid_currency}
+  param :amount, String, :desc => 'amount to be converted'
+  param :source_currency, String, :desc => 'Source currency code (USD)'
+  param :target_currency, String, :desc => 'Target currency code (CAD)'
+  returns :code => 200, :desc => 'a successful response' do
+    property :amount, Hash, :desc => '{amount : converted_amount}'
+  end
+
+
+  #Receive request and start converting the currency
   def convert_currency
     converter = Converter.new(
       params[:amount], params[:source_currency],
@@ -19,4 +31,5 @@ class CurrenciesController < ApplicationController
                     error: Message.invalid_params
                   }, :bad_request)
   end
+
 end
