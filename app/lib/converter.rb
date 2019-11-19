@@ -1,7 +1,6 @@
 class Converter
   include ActiveModel::Validations
   include MakeRequest
-  include Response
 
   attr_reader :amount, :source_currency, :target_currency
   validates :amount, presence: true, numericality: true
@@ -29,12 +28,6 @@ class Converter
   # Get current exchange rate
   def conversion_rate
     exchange_rate(source_currency, target_currency)
-  end
-
-  # Handle errors from received when getting exchange rate
-  def error_in_request(error)
-    error = { error: error }
-    [error, :bad_request]
   end
 
   # Convert and return array with amount and status code
