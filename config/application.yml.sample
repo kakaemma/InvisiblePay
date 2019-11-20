@@ -1,0 +1,4 @@
+access_key: your_currency_converter_key
+vat_access_key: your_vat_access_key
+URL: http://apilayer.net/api/live?
+VAT_URL: http://apilayer.net/api/validate?
