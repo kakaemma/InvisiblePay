@@ -32,7 +32,7 @@ class Converter
 
   # Convert and return array with amount and status code
   def process_amount(amount_to_convert, rate)
-    converted = amount_to_convert.to_i * rate.to_i
+    converted = (amount_to_convert.to_f * rate.to_f).round(2)
     amount = { amount: converted }
     [amount, :ok]
   end
