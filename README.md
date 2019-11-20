@@ -81,7 +81,7 @@ GET| /api/time/now |Get current time
 #### Current Time
 *   Using `get localhost:8081/api/time/now`
 
-**Results:**  The country code for associated with the VAT number
+**Results:**  The current time as json
 ```json
 {
     "current_time": "06:04:47 UTC +0000"
