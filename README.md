@@ -8,6 +8,7 @@ InvisiblePay is Micro-Service Application that helps automate the process of con
 3. Create an account with `https://currencylayer.com/` and obtain an access key
 
 4. Create an account with `https://vatlayer.com/` and obtain the access key for VAT
+<<<<<<< HEAD
 
 5. Run `cp config/application.yml.sample config/application.yml` to create the `application.yml` file.
 
@@ -19,6 +20,19 @@ InvisiblePay is Micro-Service Application that helps automate the process of con
 
 
 
+=======
+
+5. Run `cp config/application.yml.sample config/application.yml` to create the `application.yml` file.
+
+6. Add the access key's you obtained from step `3` and `4` to the respective keys in the application.yml file
+
+7. Install [Docker](https://docs.docker.com/v17.09/engine/installation/) to your operating system. This will allow for running docker containers on your machine 
+
+5. Install a REST CLIENT e.g [post man](https://www.getpostman.com/downloads/) 
+
+
+
+>>>>>>> chore(refactor-code) : Refactor code implementation
 *Note* Update the access keys in your application.yml file
 
 ```yml
@@ -27,13 +41,20 @@ vat_access_key: your_vat_access_key
 ```
 
 ### Running the application
-* Run `docker-compose build` to build all the services
+If you have **Docker** installed, follow these steps
+* On you terminal switch to the project folder and run the following commands
+* -> Run `docker-compose build` to build all the services
 
-* Run `docker-compose up` to start the application
+* -> Run `docker-compose up` to start the application
 
-* Start postman 
+* -> Start postman
 
-* Use the rest client to access the endpoints
+* -> Use the rest client to access the endpoints
+
+**Without Docker Installed**
+* On your terminal (Am assuming your in the projects directory), Run the command below
+
+* -> `rail s` to start the server
 
 ### API resources
 
@@ -97,3 +118,4 @@ GET| /api/time/now |Get current time
 ### Limitations
 
 * With a free account from **currencylayer** , you will only be able to have your source currency as **USD**
+* The application is still under development
