@@ -1,6 +1,7 @@
-class Converter
+# Get exchange rate and covert currency
+class ConverterService
   include ActiveModel::Validations
-  include MakeRequest
+  include Utility
 
   attr_reader :amount, :source_currency, :target_currency
   validates :amount, presence: true, numericality: true
@@ -16,24 +17,16 @@ class Converter
   # Get exchange rate and start converting the amount
   def start_converting
     request_rate = conversion_rate
-    error = request_rate['error']['info'] if request_rate['error']
-    return error_in_request(error) unless request_rate['success']
+    return error(request_rate['error']['info']) if request_rate['error']
 
-    rate = request_rate['quotes'][source_currency + target_currency]
-    process_amount(amount, rate)
+    process_amount(amount, request_rate['quotes'][source_target])
   end
 
   private
 
   # Get current exchange rate
   def conversion_rate
-    exchange_rate(source_currency, target_currency)
-  end
-
-  # Convert and return array with amount and status code
-  def process_amount(amount_to_convert, rate)
-    converted = (amount_to_convert.to_f * rate.to_f).round(2)
-    amount = { amount: converted }
-    [amount, :ok]
+    exchange_rate = ApiRequestService.new(source_currency, target_currency)
+    exchange_rate.make_request
   end
 end
