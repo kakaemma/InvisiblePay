@@ -13,7 +13,7 @@ InvisiblePay is Micro-Service Application that helps automate the process of con
 
 6. Add the access key's you obtained from step `3` and `4` to the respective keys in the application.yml file
 
-7. Install [Docker](https://docs.docker.com/v17.09/engine/installation/) to your operating system
+7. Install [Docker](https://docs.docker.com/v17.09/engine/installation/) to your operating system. This will allow for running docker containers on your machine 
 
 5. Install a REST CLIENT e.g [post man](https://www.getpostman.com/downloads/) 
 
@@ -27,13 +27,20 @@ vat_access_key: your_vat_access_key
 ```
 
 ### Running the application
-* Run `docker-compose build` to build all the services
+If you have **Docker** installed, follow these steps
+* On you terminal switch to the project folder and run the following commands
+* -> Run `docker-compose build` to build all the services
 
-* Run `docker-compose up` to start the application
+* -> Run `docker-compose up` to start the application
 
-* Start postman 
+* -> Start postman 
 
-* Use the rest client to access the endpoints
+* -> Use the rest client to access the endpoints
+
+**Without Docker Installed**
+* On your terminal (Am assuming your in the projects directory), Run the command below
+
+* -> `rail s` to start the server
 
 ### API resources
 
@@ -81,7 +88,7 @@ GET| /api/time/now |Get current time
 #### Current Time
 *   Using `get localhost:8081/api/time/now`
 
-**Results:**  The country code for associated with the VAT number
+**Results:**  The current time as json
 ```json
 {
     "current_time": "06:04:47 UTC +0000"
@@ -97,3 +104,4 @@ GET| /api/time/now |Get current time
 ### Limitations
 
 * With a free account from **currencylayer** , you will only be able to have your source currency as **USD**
+* The application is still under development
