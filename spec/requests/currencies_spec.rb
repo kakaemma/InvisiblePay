@@ -3,6 +3,27 @@ require 'rails_helper'
 RSpec.describe CurrenciesController, type: :request do
   describe 'POST /api/currency/convert' do
     context 'when the data is valid' do
+      let(:env) do
+        { 'URL' => 'URL' }
+      end
+      let(:valid_params) do
+        {
+          amount: '500', source_currency: 'USD',
+          target_currency: 'EUR'
+        }
+      end
+      before do
+        stub_const('ENV', env)
+        post '/api/currency/convert', params: valid_params
+      end
+      it 'should return status code 400' do
+        expect(response).to have_http_status(400)
+      end
+      it 'should return a connection error message' do
+        expect(response.body).to match(/Connection error/)
+      end
+    end
+    context 'when the data is valid' do
       let(:valid_params) do
         {
           amount: '500', source_currency: 'USD',

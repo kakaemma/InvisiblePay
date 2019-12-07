@@ -1,3 +1,6 @@
+# Request spec helper
+
+# module RequestSpecHelper
 module RequestSpecHelper
   # Parse JSON response to ruby hash
   def json
